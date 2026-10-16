@@ -19,7 +19,7 @@ spec:
 
       containers:
         - name: factura-producer
-          image: localhost/factura-producer:1.0
+          image: localhost/factura-producer:1.1
           imagePullPolicy: Never
 
           ports:

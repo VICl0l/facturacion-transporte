@@ -19,7 +19,7 @@ spec:
 
       containers:
         - name: factura-consumer
-          image: localhost/factura-consumer:1.0
+          image: localhost/factura-consumer:1.1
           imagePullPolicy: Never
 
           ports:

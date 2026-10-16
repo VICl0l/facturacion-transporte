@@ -4,6 +4,7 @@ import com.transportecarga.factura.dto.FacturaCreadaRequest;
 import com.transportecarga.factura.dto.PublicacionResponse;
 import com.transportecarga.factura.service.FacturaProducerService;
 import io.smallrye.common.annotation.RunOnVirtualThread;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -32,6 +33,7 @@ public class FacturaResource {
 
     @POST
     @RunOnVirtualThread
+    @RolesAllowed("facturador")
     public Response publicar(
             @NotNull @Valid FacturaCreadaRequest request
     ) {

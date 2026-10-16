@@ -3,6 +3,7 @@ package com.transportecarga.factura.resource;
 import com.transportecarga.factura.dto.FacturaResponse;
 import com.transportecarga.factura.entity.Factura;
 import io.smallrye.common.annotation.Blocking;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.Path;
@@ -19,6 +20,7 @@ public class FacturaResource {
     @GET
     @Path("/{facturaId}")
     @Blocking
+    @RolesAllowed("auditor")
     public FacturaResponse buscar(
             @PathParam("facturaId") UUID facturaId
     ) {

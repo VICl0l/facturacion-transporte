@@ -32,6 +32,12 @@ kafka:
     servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:19092}
 
 mp:
+  jwt:
+    verify:
+      publickey:
+        location: publicKey.pem
+      issuer: transporte-facturacion
+
   messaging:
     incoming:
       facturas:
