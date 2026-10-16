@@ -1,0 +1,93 @@
+{
+  "type": "record",
+  "name": "FacturaCreada",
+  "namespace": "com.transportecarga.factura.avro",
+  "doc": "Evento que informa la creación de una factura de transporte de carga.",
+  "fields": [
+    {
+      "name": "eventoId",
+      "type": "string"
+    },
+    {
+      "name": "tipoEvento",
+      "type": "string"
+    },
+    {
+      "name": "versionEvento",
+      "type": "int"
+    },
+    {
+      "name": "ocurridoEn",
+      "type": "string",
+      "doc": "Instante UTC en formato ISO-8601."
+    },
+    {
+      "name": "facturaId",
+      "type": "string"
+    },
+    {
+      "name": "numeroFactura",
+      "type": "string"
+    },
+    {
+      "name": "fechaEmision",
+      "type": "string",
+      "doc": "Fecha en formato YYYY-MM-DD."
+    },
+    {
+      "name": "clienteId",
+      "type": "string"
+    },
+    {
+      "name": "clienteNombre",
+      "type": "string"
+    },
+    {
+      "name": "servicioTransporteId",
+      "type": "string"
+    },
+    {
+      "name": "origen",
+      "type": "string"
+    },
+    {
+      "name": "destino",
+      "type": "string"
+    },
+    {
+      "name": "descripcionCarga",
+      "type": "string"
+    },
+    {
+      "name": "moneda",
+      "type": "string"
+    },
+    {
+      "name": "subtotal",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 14,
+        "scale": 2
+      }
+    },
+    {
+      "name": "impuestos",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 14,
+        "scale": 2
+      }
+    },
+    {
+      "name": "total",
+      "type": {
+        "type": "bytes",
+        "logicalType": "decimal",
+        "precision": 14,
+        "scale": 2
+      }
+    }
+  ]
+}

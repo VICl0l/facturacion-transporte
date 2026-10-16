@@ -1,0 +1,25 @@
+# Compilaciones
+**/target/
+
+# IDE
+**/.idea/
+**/*.iml
+**/.vscode/
+
+# Variables y credenciales locales
+.env
+.env.*
+!.env.example
+*.key
+*.p12
+*.pfx
+kubeconfig
+k3s.yaml
+
+# Imágenes exportadas y logs
+*.tar
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

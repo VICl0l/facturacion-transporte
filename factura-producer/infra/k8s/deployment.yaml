@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factura-producer
+  namespace: facturacion
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: factura-producer
+
+  template:
+    metadata:
+      labels:
+        app: factura-producer
+    spec:
+      enableServiceLinks: false
+
+      containers:
+        - name: factura-producer
+          image: localhost/factura-producer:1.0
+          imagePullPolicy: Never
+
+          ports:
+            - name: http
+              containerPort: 8080
+
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:9092
+
+            - name: KAFKA_FACTURAS_TOPIC
+              value: facturas-creadas
+
+            - name: SCHEMA_REGISTRY_URL
+              value: http://schema-registry:8081
+
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5

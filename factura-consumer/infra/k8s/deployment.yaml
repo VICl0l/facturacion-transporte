@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: factura-consumer
+  namespace: facturacion
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: factura-consumer
+
+  template:
+    metadata:
+      labels:
+        app: factura-consumer
+    spec:
+      enableServiceLinks: false
+
+      containers:
+        - name: factura-consumer
+          image: localhost/factura-consumer:1.0
+          imagePullPolicy: Never
+
+          ports:
+            - name: http
+              containerPort: 8080
+
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:9092
+
+            - name: SCHEMA_REGISTRY_URL
+              value: http://schema-registry:8081
+
+            - name: DB_JDBC_URL
+              value: jdbc:postgresql://postgres:5432/facturacion
+
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-facturas
+                  key: POSTGRES_USER
+
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-facturas
+                  key: POSTGRES_PASSWORD
+
+          readinessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
