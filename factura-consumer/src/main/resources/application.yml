@@ -9,6 +9,12 @@ quarkus:
   devservices:
     enabled: false
 
+  rest-client:
+    tipo-cambio:
+      url: https://api.frankfurter.dev
+      connect-timeout: 5000
+      read-timeout: 10000
+
   datasource:
     db-kind: postgresql
     username: ${DB_USERNAME:facturas_app}
